@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0044)http://localhost:8080/getInfomation?PRO_ID=4 -->
+<html lang="zh" class="windows desktop landscape">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=1190">
+    <title>项目列表</title>
+    <!-- style for large viewport -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap-table.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/css1.css">
+    <!-- style for large viewport -->
+    <link href="../css/common.css" rel="stylesheet">
+    <link href="../css/enchiridion.css" rel="stylesheet">
+    <link rel="stylesheet" href="../layui/css/layui.css" type="text/css"/>
+    <script type="text/javascript" src="../js/jquery-1.8.2.js"></script>
+    <script type="text/javascript" src="../layui/layui.js">
+    </script>
+    <script type="text/javascript" src="../js/myJs.js"></script>
+
+    <style type="text/css">
+        .td_title {
+            background-color: #F5F5F5;
+        }
+        .fontstyle{
+            width: auto;
+        }
+
+        .user-head{display:block;width:5.0rem;height:5.0rem;margin-right: 0.5rem;float:left;border-radius: 50%;}
+
+        .input {border-radius:2px;width:100%;height:26px;font-size: 16px;background-color:#FFFAFA;border:1px solid #DBDBDB ;}
+
+        textarea {border-radius:2px;width:100%;height:50px;font-size: 16px;background-color:#FFFAFA;border:1px solid #DBDBDB ;}
+
+        <!--
+        .hr0 {
+            height: 2px;
+            border-top-width: 2px;
+            border-top-style: solid;
+            border-right-style: none;
+            border-bottom-style: none;
+            border-left-style: none;
+            border-top-color: #C00;
+            margin-top: -20px;
+        }
+        .layui-table-cell{
+            height:36px;
+            line-height: 36px;
+        }
+
+        -->
+    </style>
+</head>
+<script>
+
+
+
+</script>
+
+<body data-spy="scroll" data-target=".navbar-affix">
+<div id="container">
+
+    <div class="common-content" style="padding-top:0px;">
+        <form class="layui-form" id="addHouse" >
+            <input type="hidden" id="hid" name="hid" value="" >
+            <input type="hidden" id="sites" name="sites" value="" >
+            <input type="hidden" id="tags" name="tags" value="" >
+            <input type="hidden" id="user" name="user" value="" >
+            <input type="hidden" id="himgs" name="himgs" value="" >
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label fontstyle">零食标题</label>
+                    <div class="layui-input-inline ">
+                        <input type="text" id="htitle" name="htitle" value="" lay-verify="required" lay-reqtext="零食标题是必填项，不能为空？"  autocomplete="off" placeholder="请输入用户名" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">房型</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="htype" name="htype" lay-verify="title" autocomplete="off" placeholder="1,1,1(卧室、客厅、卫生间)" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label fontstyle">当前的楼层</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="hfloor" name="hfloor" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">总楼层</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="hfloors" name="hfloors" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label fontstyle">租赁时长</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="time" name="time" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">面积</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="harea" name="harea" placeholder="请输入" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label fontstyle">具体地址</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="haddress" name="haddress" placeholder="请输入" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">朝向</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="orient" name="orient" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label fontstyle">离地铁站距离</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="distance" name="distance" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label fontstyle">该地区均价</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="avgprice" name="avgprice" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">租金</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="hmoney" name="hmoney" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label fontstyle">付款方式</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="hpaytype" name="hpaytype" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label fontstyle">出租类型</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="lettype" value="1" title="合租" checked="">
+                        <input type="radio" name="lettype" value="0" title="整租">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label fontstyle">出租状态</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="hstate" value="1" title="已出租" checked="">
+                        <input type="radio" name="hstate" value="0" title="未出租">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label fontstyle">零食状态</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="hbitid" value="1" title="正常" checked="">
+                    <input type="radio" name="hbitid" value="0" title="下架">
+                    <input type="radio" name="hbitid" value="2" title="被举报过多">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label fontstyle">备注</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="hremark" name="hremark"   autocomplete="off" class="layui-header">
+                        <!--<input type="text" id="htype" name="tel" lay-verify="required|phone" autocomplete="off" class="layui-input">-->
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <!--<div class="layui-form-item layui-form-text">
+              <label class="layui-form-label">编辑器</label>
+              <div class="layui-input-block">
+                <textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="LAY_demo_editor"></textarea>
+              </div>
+            </div>-->
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1" >立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</div>
+<script type="text/javascript">
+    layui.use('form', function(){
+        var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+        form.render();
+    });
+
+    $('#addHouse').submit(function (event) {
+        //首先验证文件格式
+        // var fileName = $(this).find("input[name=file]").val();
+        // if (fileName === '') {
+        //     alert('请选择文件');
+        //     return;
+        // }
+        // mulitipart form,如文件上传类\
+       var data = $('#addHouse').serialize();
+        // var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+        // parent.layer.close(index); //再执行关闭
+        $.ajax({
+            async: false,
+            type: "POST",
+            url: "/house",
+            data: data ,
+            dataType: "JSON",
+            // mimeType: "multipart/form-data",
+            // contentType:  "application/json;charset=UTF-8",
+            cache: false,
+            processData: false,
+            success: function (data) {
+                layer.msg(data.msg, {
+                    icon: 1, time: 5000, end: function () {
+                        // window.location.href = "/youth/user/list.html";
+                    }
+                });
+            }
+        });
+
+        return false;
+    });
+</script>
+</body>
+</html>

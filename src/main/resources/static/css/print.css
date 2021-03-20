@@ -1,0 +1,166 @@
+/* CSS Document */
+html, body {
+	margin: 0px;
+	height:100%;
+	font-size:14px;
+    font-family: "宋体";
+}
+.printHeader{
+	font-family: "宋体";
+	font-size: 24px;
+	font-style: normal;
+	line-height: 50px;
+	font-weight: bold;
+	text-align:center;
+	vertical-align:middle;
+	letter-spacing: 0.3em;
+}
+
+.printSeHeader{
+	font-family: "宋体";
+	font-size: 18px;
+	font-style: normal;
+	line-height: 50px;
+	font-weight: normal;
+	text-align:center;
+	vertical-align:middle;
+	letter-spacing: 0.5em;
+}
+
+.printDataTable{
+ 	margin:0;
+ 	padding:0;
+ 	border-collapse: collapse;
+}
+
+.printDataTable tr{
+	height:50px;
+	vertical-align:middle;
+}
+
+.printDataTable td{
+	height:50px;
+	vertical-align:middle;
+	text-align:left;
+	font-size:14px;
+	padding: 2px 10px;
+}
+
+.printDataTable td.b{
+	height:50px;
+	vertical-align:middle;
+	text-align:left;
+	font-size:14px;
+	padding: 2px 10px;
+}
+
+.printDataTable td.label_1{
+	text-align:center;
+	vertical-align:middle;
+	font-size:14px;
+	padding: 2px 4px;
+	font-weight: bold;
+}
+
+.printDataTable td.printSubHeader{
+	font-family: "宋体";
+	font-size: 14px;
+	font-style: normal;
+	text-align:center;
+	vertical-align:middle;
+	font-weight: bold;
+}
+.printDataTable td.printStamp{
+	height:30px;
+	vertical-align:middle;
+	text-align:left;
+	color: #666666;
+	text-align:center;	
+}
+
+.printDataTable th{
+	height:50px;
+	text-align:center;
+	font-size: 14px;
+	font-style: normal;
+	font-weight:normal;
+	vertical-align:middle;
+}
+.printListTable{
+
+}
+.printListTable tr{
+     height:50px;
+	vertical-align:middle;
+}
+.printListTable td{
+	height:35px;
+	text-align:center;
+	font-size: 14px;
+	font-style: normal;
+	font-weight:normal;
+	vertical-align:middle;
+}
+
+.printDoc_title{
+	font-size:22px;
+	display:block;
+	height:30px;
+	text-align:center;
+	font-weight:bold;
+	letter-spacing:0px;
+	word-spacing: 4em;
+}
+
+.printDoc_sec_title{
+	font-size:20px;
+	display:block;
+	height:30px;
+	text-align:center;
+	font-weight:normal;
+	letter-spacing:0px;
+	word-spacing: 4em;
+}
+
+.printDoc_content{
+	font-size:16px;
+	font:"宋体";
+	line-height:23px;
+	font-weight:normal;
+}
+
+.printcommitment_title{
+	font-size:25px;
+	display:block;
+	height:50px;
+	text-align:center;
+	font-weight:bold;
+	letter-spacing:0px;
+	word-spacing: 4em;
+}
+
+.printcommitment_sec_title{
+	font-size:18px;
+	display:block;
+	height:25px;
+	text-align:center;
+	font-weight:normal;
+	letter-spacing:0px;
+	word-spacing: 4em;
+}
+
+.printcommitment_content{
+	font-size:14px;
+	font:"宋体";
+	line-height:20px;
+	font-weight:normal;
+}
+
+.printcommitment_content p{
+	text-indent:2em;
+}
+
+.printcommitment_content p1{
+	font-weight:bold;
+	text-indent:0em;
+}

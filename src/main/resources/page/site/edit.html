@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0044)http://localhost:8080/getInfomation?PRO_ID=4 -->
+<html lang="zh" class="windows desktop landscape">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=1190">
+    <title>站点信息</title>
+    <!-- style for large viewport -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-table.css" rel="stylesheet">
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/css1.css">
+    <!-- style for large viewport -->
+    <link href="/static/css/common.css" rel="stylesheet">
+    <link href="/static/css/enchiridion.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/layui/css/layui.css" type="text/css"/>
+    <script type="text/javascript" src="/static/js/jquery-1.8.2.js"></script>
+    <script type="text/javascript" src="/static/layui/layui.js">
+    </script>
+    <script type="text/javascript" src="/static/js/myJs.js"></script>
+    <script type="text/javascript" src="/static/js/xm-select.js"></script>
+
+    <style type="text/css">
+        /* 下拉多选样式 需要引用*/
+
+
+        .td_title {
+            background-color: #F5F5F5;
+        }
+        .fontstyle{
+            width: auto;
+        }
+
+        .user-head{display:block;width:5.0rem;height:5.0rem;margin-right: 0.5rem;float:left;border-radius: 50%;}
+
+        .input {border-radius:2px;width:100%;height:26px;font-size: 16px;background-color:#FFFAFA;border:1px solid #DBDBDB ;}
+
+        textarea {border-radius:2px;width:100%;height:50px;font-size: 16px;background-color:#FFFAFA;border:1px solid #DBDBDB ;}
+
+        <!--
+        .hr0 {
+            height: 2px;
+            border-top-width: 2px;
+            border-top-style: solid;
+            border-right-style: none;
+            border-bottom-style: none;
+            border-left-style: none;
+            border-top-color: #C00;
+            margin-top: -20px;
+        }
+        .layui-table-cell{
+            height:36px;
+            line-height: 36px;
+        }
+
+        -->
+    </style>
+</head>
+<script>
+
+
+
+</script>
+
+<body data-spy="scroll" data-target=".navbar-affix">
+<div id="container">
+
+    <div class="common-content" style="padding-top:0px;">
+        <form class="layui-form" id="addHouse" >
+            <input type="hidden" id="siteid" name="siteid" value="${site.siteid}" >
+            <div class="layui-form-item">
+                <div class="layui-inline">
+
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label ">地铁线</label>
+                    <div class="layui-input-inline ">
+                    <input type="text" class="layui-input" placeholder="例如1：代表一号线" id="sid" name="sid" value="${site.sid}" autocomplete="off"  >
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label fontstyle">站点名</label>
+                    <div class="layui-input-inline ">
+                        <input type="text" id="sname" name="sname" value="${site.sname}" lay-verify="required" lay-reqtext="零食标题是必填项，不能为空？"  autocomplete="off" placeholder="请输入站点名" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+
+                    <label class="layui-form-label fontstyle">所属区域</label>
+                    <div id="regions" class="xm-select-demo"></div>
+             </div>
+
+
+
+
+
+
+            <!--<div class="layui-form-item layui-form-text">
+              <label class="layui-form-label">编辑器</label>
+              <div class="layui-input-block">
+                <textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="LAY_demo_editor"></textarea>
+              </div>
+            </div>-->
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1" >立即提交</button>
+
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</div>
+<script type="text/javascript">
+    var regions = xmSelect.render({
+        // 这里绑定css选择器
+        el: '#regions',
+        size: 'large',
+        style: {
+            marginLeft: '90px',
+            borderRadius: '50px',
+            height: '50px',
+            width: '300px'
+        },
+        prop: {
+            name: 'rname',
+            value: 'rcode'
+        },
+        // 渲染的数据
+        data: [
+        ]
+    });
+    var ids =[];
+    <#if site.regions??>
+    <#list site.regions as item>
+    ids.push(${item.rcode})
+    </#list>
+    </#if>;
+    $.ajax({
+        method: 'get',
+        url: '/public/region',
+        success: function (res) {
+            if(ids!=null){
+                for (var i = 0; i <ids.length ; i++) {
+                    for (var j = 0; j <res.data.length ; j++) {
+                        if(res.data[j].rcode==ids[i]){
+                            res.data[j].selected=true
+                        }
+                        continue;
+                    }
+
+                }
+            }
+
+            regions.update({
+                data: res.data,
+                autoRow: true
+            });
+         }
+    });
+
+
+
+      $("#valueStr").click(function () {
+          //获取当前多选选中的值
+          var selectArr = regions.getValue("valueStr");
+          document.getElementById('demo2-value').innerHTML = JSON.stringify(selectArr, null, 2);
+      });
+
+    layui.use('form', function(){
+        var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+        form.render('select');
+        // form.render();
+    });
+
+    $('#addHouse').submit(function (event) {
+        //首先验证文件格式
+        // var fileName = $(this).find("input[name=file]").val();
+        // if (fileName === '') {
+        //     alert('请选择文件');
+        //     return;
+        // }
+        // mulitipart form,如文件上传类\
+       var data = $('#addHouse').serialize();
+        // var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+        // parent.layer.close(index); //再执行关闭
+        $.ajax({
+            async: false,
+            type: "POST",
+            url: "/site",
+            data: data ,
+            dataType: "JSON",
+            // mimeType: "multipart/form-data",
+            // contentType:  "application/json;charset=UTF-8",
+            cache: false,
+            processData: false,
+            success: function (data) {
+                layer.msg(data.msg, {
+                    icon: 1, time: 5000, end: function () {
+                        // window.location.href = "/youth/user/list.html";
+                    }
+                });
+            }
+        });
+
+        return false;
+    });
+
+
+</script>
+</body>
+</html>

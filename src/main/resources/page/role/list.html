@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="/static/css/index.css">
+    <script src="/static/js/vue.js"></script>
+    <!-- import JavaScript -->
+    <script src="/static/js/index.js"></script>
+    <script src="/static/js/axios.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <template>
+        <section>
+            <el-row>
+                <el-col :span="24">
+                    <!--表单-->
+                    <el-form :inline="true" :model="formInline" class="demo-form-inline">
+                        <el-form-item label="姓名">
+                            <el-input v-model="formInline.uname" placeholder="姓名" style="width: 140px;"></el-input>
+                        </el-form-item>
+                        </el-form-item>
+
+                        <el-button name="" type="primary" @click="onSubmit">查询</el-button>
+                        <a href="javascript:;" id="download" style="background-color:#409EFF;color: #fff;padding: 12px 10px!important;margin-left: 10px!important;border-radius:4px " @click="download()" download="download.csv">导出数据</a>
+                    </el-form>
+                    <!--表格-->
+                    <el-button type="primary" @click="add" >添加</el-button>
+                    <el-table
+                            :data="tableData.slice((currentPage-1)*pagesize,currentPage*pagesize)"
+                            border
+                            style="width: 100%"
+                           >
+
+                        <el-table-column type="selection">
+                        </el-table-column>
+                        <el-table-column
+                                prop="uid"
+                                label="用户id"
+                                width="180">
+                        </el-table-column>
+                        <el-table-column
+                                prop="uname"
+                                label="用户名"
+                                width="180">
+                        </el-table-column>
+                        <el-table-column
+                                prop="rkey"
+                                label="用户字符">
+                        </el-table-column>
+                        <el-table-column label="是否停用">
+                            <template slot-scope="scope">
+
+                                <el-switch
+                                        v-model="scope.row.status"
+                                        active-value=0
+                                        inactive-value=1
+
+                                        @change=change_switch(scope.row.uid,scope.row.status)>
+
+                                </el-switch>
+
+                            </template>
+                        </el-table-column>
+                        <el-table-column label="操作">
+                            <template scope="scope">
+                                <el-button type="primary" size="small" @click="configUser(scope.$index, scope.row)">分配用户</el-button>
+                                <el-button type="primary" size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+                                <el-button type="danger" size="small" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                            </template>
+                        </el-table-column>
+                    </el-table>
+                    <div class="block">
+                        <el-pagination
+                                @size-change="handleSizeChange"
+                                @current-change="handleCurrentChange"
+                                :current-page="currentPage"
+                                :page-sizes="[5, 10, 20, 40]"
+                                :page-size="pagesize"
+                                layout="total, sizes, prev, pager, next, jumper"
+                                :total="tableData.length">
+                        </el-pagination>
+                    </div>
+                </el-col>
+            </el-row>
+            <el-dialog title="修改用户信息" :visible="dialogFormVisible" :before-close="dialogClose" size="tiny">
+            <el-form ref="form" :model="form" label-width="80px">
+                <el-form-item label="用户名">
+                    <el-input v-model="form.uname"></el-input>
+                </el-form-item>
+                <el-form-item label="用户字符">
+                    <el-input v-model="form.rkey"></el-input>
+                </el-form-item>
+                <el-form-item label="是否停用">
+                    <template slot-scope="scope">
+
+                        <el-switch
+                                v-model="form.status"
+                                active-value=0
+                                inactive-value=1>
+
+                        </el-switch>
+                        <el-form-item label="菜单权限">
+
+
+                            <el-tree
+                                    :data="data"
+                                    show-checkbox
+                                    default-expand-all
+                                    node-key="mid"
+                                    ref="tree"
+                                    highlight-current
+                                    :props="props">
+                            </el-tree>
+                        </el-form-item>
+                    </template>
+                </el-form-item>
+                <el-form-item>
+                    <el-button type="primary" @click="handleSave" :loading="editLoading">修改</el-button>
+                    <el-button @click="dialogFormVisible = false">取消</el-button>
+                </el-form-item>
+            </el-form>
+        </el-dialog>
+            <el-dialog title="添加用户"  :visible="addVisible"  :before-close="dialogClose" size="tiny">
+                <el-form ref="form" :model="form" label-width="80px">
+                    <el-form-item label="用户名">
+                        <el-input v-model="form.uname"></el-input>
+                    </el-form-item>
+                    <el-form-item label="用户字符串">
+                        <el-input v-model="form.rkey"></el-input>
+                    </el-form-item>
+                    <el-form-item label="是否停用">
+                        <template slot-scope="scope">
+
+                            <el-switch
+                                    v-model="form.status"
+                                    active-value=0
+                                    inactive-value=1>
+
+                            </el-switch>
+
+                        </template>
+                    </el-form-item>
+                    <el-form-item>
+                        <el-button type="primary" @click="save" :loading="addLoading">提交</el-button>
+                        <el-button @click="addVisible = false">取消</el-button>
+                    </el-form-item>
+                </el-form>
+            </el-dialog>
+        </section>
+
+    </template>
+
+</div>
+
+
+</body>
+<!-- import Vue before Element -->
+</html>
+<script>
+
+    var Main = {
+        data() {
+            return {
+                formInline: {
+                        uid:'',
+                        uname: '',
+                        rkey: '',
+                        status: ''
+                },
+                dialogFormVisible: false,
+                addVisible: false,
+                editLoading: false,
+                addLoading: false,
+                form: {
+                    uid:'',
+                    uname: '',
+                    rkey: '',
+                    status: '',
+                },
+                tableData: [],
+                currentPage:1, //初始页
+                pagesize:10,    // 每页的数据
+            }
+        },
+        created () {
+        var _this = this;   //很重要！！
+        axios.get('/user/search')
+            .then(function (res) {
+                res = res.data;
+                if(res.code=="200")
+                    _this.tableData = res.data;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    },
+        methods: {
+            add(){
+                this.addVisible = true;
+            },
+            change_switch:function(uid,status){
+                axios.post('/user/updateStatus',{
+                    uid:uid,
+                    status:status
+                })
+                    .then(res=>{
+                        res = res.data;
+                        if(res.code=="200"){
+                            this.$message({
+                                message: res.msg,
+                                type: 'success'
+                            });
+                        }
+
+                    }).catch(function (error) {
+                    console.log(error);
+                });
+            },
+            configUser (index, row){
+                axios.put('/user/updateStatus',{
+                    uid:uid,
+                    status:status
+                })
+                    .then(res=>{
+                        res = res.data;
+                        if(res.code=="200"){
+                            this.$message({
+                                message: res.msg,
+                                type: 'success'
+                            });
+                        }
+
+                    }).catch(function (error) {
+                    console.log(error);
+                });
+            },
+            onSubmit () {
+                var _this = this;   //很重要！！
+                    axios.post('/user/search',_this.formInline)
+                        .then(function (res) {
+                            res = res.data;
+                            if(res.code=="200")
+                                _this.tableData = res.data;
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                }
+
+            },
+            handleDelete (index, row) {
+                this.tableData.splice(index, 1);
+                this.$message({
+                    message: "操作成功！",
+                    type: 'success'
+                });
+            },
+            handleEdit (index, row) {
+                this.dialogFormVisible = true;
+                this.form = Object.assign({}, row);
+                this.table_index = index;
+            },
+            handleSave () {
+                this.$confirm('确认提交吗？', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    cancelButtonClass: 'cancel'
+                }).then(() => {
+                    _this.editLoading = true;
+
+//          this.tableData[this.table_index] = this.form;
+                this.tableData.splice(this.table_index, 1, this.form);
+                this.$message({
+                    message: "操作成功！",
+                    type: 'success'
+                });
+                    this.editLoading = false;
+                    this.dialogFormVisible = false;
+            }).catch(() => {
+
+                });
+            },
+            save () {
+                var _this = this;
+                this.$confirm('确认提交吗？', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    cancelButtonClass: 'cancel'
+                }).then(() => {
+                    _this.addLoading = true;
+                    axios.post('/role',_this.form
+                    )
+                        .then(res=>{
+                            res = res.data;
+                            if(res.code=="200"){
+                                this.$message({
+                                    message: res.msg,
+                                    type: 'success'
+                                });
+                            }
+
+                        }).catch(function (error) {
+                        console.log(error);
+                    });
+//          this.tableData[this.table_index] = this.form;
+
+                    this.addLoading = false;
+                    this.addVisible = false;
+                    axios.get('/role')
+                        .then(function (res) {
+                            res = res.data;
+                            if(res.code=="200")
+                                _this.tableData = res.data;
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+            }).catch(() => {
+
+                });
+            },
+            handleSizeChange(val) {
+                this.pagesize = val;
+            },
+            handleCurrentChange(val) {
+                this.currentPage = val;
+            },
+            dialogClose(){
+                this.dialogFormVisible = false;
+                this.addVisible = false;
+            }
+        }
+
+    };
+    var Ctor = Vue.extend(Main);
+    new Ctor().$mount('#app')
+</script>

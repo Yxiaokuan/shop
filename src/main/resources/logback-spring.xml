@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+		<!-- reset all previous level configurations of all j.u.l. loggers -->
+		<resetJUL>true</resetJUL>
+	</contextListener>
+
+	<appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<Pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] %-5level [%logger{50}:%line] - %msg%n</Pattern>
+			<Charset class="java.nio.charset.Charset">UTF-8</Charset>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>TRACE</level>
+		</filter>
+	</appender>
+
+	<appender name="debugAppender"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>/var/log/mofangreport/logs/debug.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<FileNamePattern>/var/log/mofangreport/logs/debug.%d{yyyy-MM-dd}.%i.log
+			</FileNamePattern>
+
+			<!-- keep 30 days' worth of history -->
+			<maxHistory>30</maxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>50MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg %n
+			</Pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>TRACE</level>
+		</filter>
+	</appender>
+
+	<appender name="infoAppender"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>/var/log/mofangreport/logs/info.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<FileNamePattern>/var/log/mofangreport/logs/info.%d{yyyy-MM-dd}.%i.log
+			</FileNamePattern>
+
+			<!-- keep 30 days' worth of history -->
+			<maxHistory>90</maxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>50MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<Pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] %-5level [%logger{50}:%line] - %msg%n</Pattern>
+			<Charset class="java.nio.charset.Charset">UTF-8</Charset>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+		</filter>
+	</appender>
+
+	<appender name="errorAppender"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>/var/log/mofangreport/logs/error.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<FileNamePattern>/var/log/mofangreport/logs/error.%d{yyyy-MM-dd}.%i.log
+			</FileNamePattern>
+
+			<!-- keep 30 days' worth of history -->
+			<maxHistory>90</maxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>50MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<Pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] %-5level [%logger{50}:%line] - %msg%n</Pattern>
+			<Charset class="java.nio.charset.Charset">UTF-8</Charset>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>ERROR</level>
+		</filter>
+	</appender>
+
+
+	<appender name="warningAppender"
+			  class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>/var/log/mofangreport/logs/warning.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<FileNamePattern>/var/log/mofangreport/logs/warning.%d{yyyy-MM-dd}.%i.log
+			</FileNamePattern>
+
+			<!-- keep 30 days' worth of history -->
+			<maxHistory>90</maxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy
+					class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>50MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<Pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] %-5level [%logger{50}:%line] - %msg%n</Pattern>
+			<Charset class="java.nio.charset.Charset">UTF-8</Charset>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>WARN</level>
+		</filter>
+	</appender>
+
+	<appender name="serviceAppender"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>/var/log/mofangreport/logs/service.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<FileNamePattern>/var/log/mofangreport/logs/service.%d{yyyy-MM-dd}.%i.log
+			</FileNamePattern>
+
+			<!-- keep 30 days' worth of history -->
+			<maxHistory>30</maxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>50MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<Pattern>%X{appId} %X{clientIp} %d{HH:mm:ss.SSS} [%thread] %-5level
+				%logger{35} - %msg %n
+			</Pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+		</filter>
+	</appender>
+
+	<logger name="org.springframework">
+		<level value="WARN" />
+	</logger>
+	<logger name="com.mofang.report">
+		<level value="INFO" />
+	</logger>
+
+
+	<root level="INFO">
+		<appender-ref ref="consoleAppender" />
+		<appender-ref ref="infoAppender" />
+		<appender-ref ref="errorAppender" />
+		<appender-ref ref="warningAppender"/>
+	</root>
+</configuration>
+

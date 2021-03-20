@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>管理平台</title>
+    <script src="../js/jquery-1.6.2.js"></script>
+    <script type="text/javascript" src="../js/page.js"></script>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <link rel="stylesheet" href="../css/css1.css">
+    <script src="../layui/layui.js"></script>
+    <script type="text/javascript" src="../js/jquery-1.8.2.js"></script>
+</head>
+
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+<!--<iframe-->
+        <!--border=0 frameBorder=no height=105 marginHeight=0 marginWidth=0-->
+        <!--scrolling=no src="../public/header.html"-->
+        <!--width=100%></iframe>-->
+
+    <div class="layui-header" >
+        <div class="layui-logo" style="margin: auto;width: auto;left: 200px;"><font style="font-size:24px;color:#FF0000">管理平台</font></div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;;">
+                    高技处
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href="">退了</a></li>
+        </ul>
+    </div>
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-filter="menuTree">
+                <li class="layui-nav-item">
+                    <a   href="../../page/manager/index.html">首页</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a   href="javascript:;">系统管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a  href="../user/list_user.html">用户管理</a></dd>
+                        <dd><a href="../list_all2.html">角色管理</a></dd>
+                        <dd><a href="../list_all2.html">菜单管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">数据管理</a>
+                    <dl class="layui-nav-child">
+                        <dd ><a   href="../house/list_house.html">零食管理</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body" style="margin:5px;">
+        <!-- 内容主体区域 -->
+        <iframe id="iframeMain" frameborder="0" scrolling="auto" src="list_house.html" style="width: 100%" ; height="100%" ;></iframe>
+
+    </div>
+    <div class="layui-footer" style="text-align:center;"></div>
+
+</div>
+
+</body>
+<script>
+    //模拟单页跳转
+    $(document).ready(function() {
+        $("a").click(function(e) {
+            e.preventDefault();
+            $("#iframeMain").attr("src", $(this).attr("href"));
+        });
+    });
+    //JavaScript代码区域
+    layui.use('element', function() {
+        var element = layui.element;
+
+    });
+
+
+
+</script>
+</html>

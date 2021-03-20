@@ -1,0 +1,49 @@
+.address-container,
+.finance-container{
+    width:1200px;
+    margin:0 auto;
+
+}
+.address-item{
+    color: #108ee9;
+    display: inline-block;
+    padding:5px 10px;
+    font-size: 16px;
+}
+.address-item1{
+    color: #FF0000;
+    display: inline-block;
+    padding:5px 10px;
+    font-size: 16px;
+}
+.address-item:hover{
+    cursor: pointer;
+    color: #FF0000;
+}
+.address-item1:hover{
+    cursor: pointer;
+    color: #108ee9;
+}
+.address-item:after{
+    content:"|";
+    width: 1px;
+    height:10px;
+    margin-left:20px;
+    color: #e3e3e3;
+}
+.address-item1:after{
+    content:"|";
+    width: 1px;
+    height:10px;
+    margin-left:20px;
+    color: #e3e3e3;
+}
+
+.address-item-active
+{
+    color:red;
+}
+
+
+
+

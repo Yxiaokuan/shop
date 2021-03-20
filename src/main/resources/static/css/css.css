@@ -1,0 +1,355 @@
+.text {
+	font-size: 14px;
+	color: #CC0000;
+	text-decoration: none;
+	font-weight: bold;
+	line-height: 20px;
+}
+
+.text2 {
+	font-size: 14px;
+	color: #000000;
+}
+
+.text3 {
+	font-size: 15px;
+	color: #CC0000;
+	text-decoration: none;
+	font-weight: bold;
+	line-height: 25px;
+}
+
+.text4 {
+	font-size: 14px;
+	color: #FF0000;
+	text-decoration: none;
+	font-weight: bold;
+	line-height: 20px;
+}
+
+.text5 {
+	font-size: 14px;
+	color: #000000;
+	text-decoration: none;
+	font-weight: normal;
+	line-height: 20px;
+	text-indent: 2px;
+}
+
+.text6 {
+	font-size: 13px;
+	color: #000000;
+}
+
+.textfield {
+	font-size: 12px;
+	border: 1px solid #999999;
+	text-indent: 2px;
+}
+
+a:hover {
+	color: #0066CC;
+	text-decoration: none;
+}
+
+a {
+	text-decoration: none;
+	/*去除下划线*/
+}
+
+/*.button {*/
+	/*width: 100px; !* 宽度 *!*/
+	/*height: auto; !* 高度 *!*/
+	/*border-width: 1px; !* 边框宽度 *!*/
+	/*background: #fffaf4; !* 背景颜色 *!*/
+	/*border-color: #de371c;*/
+	/*border-radius:80px;*/
+	/*cursor: pointer; !* 鼠标移入按钮范围时出现手势 *!*/
+	/*outline: none; !* 不显示轮廓线 *!*/
+	/*font-family: Microsoft YaHei; !* 设置字体 *!*/
+	/*font-size: 18px;*/
+	/*line-height: 38px;*/
+	/*text-align: center;*/
+	/*vertical-align:middle;*/
+	/*color: #de371c; !* 字体颜色 *!*/
+/*}*/
+/*.button:hover{*/
+	/*background: #CC0000;*/
+	/*color: #FFFFFF;*/
+/*}*/
+.button {
+	width: 110px; /* 宽度 */
+	height: 25px; /* 高度 */
+	border-width: 0px; /* 边框宽度 */
+	border-radius: 3px; /* 边框半径 */
+	background: #b6070b; /* 背景颜色 */
+	cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+	outline: none; /* 不显示轮廓线 */
+	font-family: Microsoft YaHei; /* 设置字体 */
+	color: white; /* 字体颜色 */
+	font-size: 17px; /* 字体大小 */
+}
+
+/*.button:hover{*/
+/*background: #b6070b;*/
+/*}*/
+#zwdtSWContainer {
+	width: 100%;
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+.tit {
+	font-size: 18px;
+	color: #b6070b;
+	width: 995px;
+	margin: 0 auto;
+	line-height: 40px;
+}
+
+#zwdtSWNav {
+	border-radius: 7px;
+	border: 1px solid #b8926b;
+	width: 1012px;
+	margin: 0 auto;
+	min-height: 450px;
+	background-color: #fff;
+	position: relative;
+	margin-bottom: 10px;
+}
+
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #FFFFFF;
+}
+
+.mytable {
+	width: 95%;
+	margin-bottom: 20px;
+}
+
+/*.list_table {*/
+/*font-size:14px;*/
+/*background-color: #FFFFFF;*/
+/*}*/
+.list_table {
+	font-size: 14px;
+}
+
+pre {
+	white-space: pre-wrap; /* css3.0 */
+	font-size: 13px;
+	color: #000000;
+	font-family: Arial;
+}
+
+
+
+/*.BG_one{background:url(images/bj.jpg) no-repeat 50%;background-size:cover;background-attachment:fixed;}*/
+
+.Body_div {
+	width: 100%;
+	min-height: 768px;
+	height: auto;
+	position: absolute;
+	top: 0;
+}
+
+.Div_header {
+	height: 110px;
+	width: 100%;
+}
+
+.Div_h_logo {
+	height: 90px;
+	width: 700px;
+	margin: 20px auto 0 auto;
+	background: url(../img/logo_t.png) no-repeat left;
+	font-weight: bolder;
+}
+
+.Div_h_l_t {
+	height: 75px;
+	margin-left: 75px;
+	width: 620px;
+	font-size: 50px;
+	letter-spacing: 5px;
+	color: #145B93;
+	line-height: 100px;
+}
+
+.Div_content {
+	width: 85%;
+	min-height: 500px;
+	background: white;
+	margin: 10px auto;
+	box-shadow: 0 0 15px 1px #ccc;
+	-webkit-box-shadow: 0 0 15px 1px #ccc;
+	padding-bottom: 20px;
+}
+
+.Div_content1 {
+	width: 75%;
+	min-height: 500px;
+	background: white;
+	margin: 10px auto;
+	box-shadow: 0 0 15px 1px #ccc;
+	-webkit-box-shadow: 0 0 15px 1px #ccc;
+	padding-bottom: 20px;
+}
+
+.Div_a_t_main {
+	width: 1024px;
+	height: 40px;
+	margin: 0 auto;
+	margin: 20px auto;
+	text-align: center;
+}
+
+.Div_article_two {
+	width: 100%;
+	height: 80px;
+	margin-bottom: 50px;
+	position: relative;
+}
+
+li {
+	list-style: none;
+}
+
+.time-line {
+	width: 100%;
+	position: relative;
+	height: 140px
+}
+
+.time-line .left-btn, .time-line .right-btn {
+	width: 30px;
+	height: 30px;
+	background: url(../img/arrow.png) no-repeat;
+	position: absolute;
+	margin-top: -15px;
+	cursor: pointer;
+}
+
+.time-line .left-btn {
+	left: 0;
+	top: 50%;
+}
+
+.time-line .right-btn {
+	right: 0;
+	top: 50%;
+	transform: rotate(180deg);
+}
+
+.time-line .right-btn:hover {
+	background: url(../img/arrow-hover.png) no-repeat;
+	transform: rotate(180deg);
+}
+
+.time-line .left-btn:hover {
+	background: url(../img/arrow-hover.png) no-repeat;
+}
+
+.time-line .time-box {
+	width: 840px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.time-line .time-box ul {
+	overflow: hidden;
+	position: relative;
+	height: 160px;
+}
+
+.time-line .time-box ul:after {
+	content: "";
+	background: #d2d2d2;
+	height: 1px;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: 47%;
+}
+
+.time-line .time-box li {
+	width: 175px;
+	float: left;
+	padding: 10px;
+	box-sizing: border-box;
+	/*border: 1px solid #d2d2d2;*/
+	position: relative;
+	cursor: pointer;
+}
+.time-line .time-box li:nth-child(n) {
+	margin-top: 25px;
+}
+
+.time-line .time-box li:nth-child(n):after {
+	bottom: auto;
+	top: 45px;
+}
+
+
+.time-line .time-box li:nth-child(2n) {
+	margin-top: 85px;
+}
+
+.time-line .time-box li:nth-child(2n):after {
+	bottom: auto;
+	top: -17px;
+}
+
+/*.time-line .time-box li:before {*/
+	/*content: "";*/
+	/*border-left: 1px solid #d2d2d2;*/
+	/*border-bottom: 1px solid #d2d2d2;*/
+	/*position: absolute;*/
+	/*width: 16px;*/
+	/*height: 16px;*/
+	/*background: #fff;*/
+	/*bottom: -9px;*/
+	/*transform: rotate(-45deg);*/
+	/*left: 50%;*/
+	/*margin-left: -8px;*/
+/*}*/
+
+.time-line .time-box li:after {
+	content: "";
+	width: 15px;
+	height: 15px;
+	background: url(../img/point_no.png) no-repeat;
+	position: absolute;
+	left: 50%;
+	margin-left: -7px;
+	bottom: 0;
+	bottom: -48px;
+	z-index: 1;
+}
+
+/*.time-line .time-box li:nth-child(2n):before {*/
+	/*bottom: auto;*/
+	/*top: 45px;*/
+	/*transform: rotate(-225deg);*/
+/*}*/
+
+
+
+/*.time-line .time-box li:hover, .time-line .time-box li.active {*/
+	/*background: #1b96ff;*/
+	/*color: #fff;*/
+	/*border-color: #1b96ff;*/
+/*}*/
+
+/*.time-line .time-box li:hover:before, .time-line .time-box li.active:before {*/
+	/*border-color: #1b96ff;*/
+	/*background: #1b96ff;*/
+/*}*/
+
+.time-line .time-box li.active:after {
+	background: url(../img/point-hover.png) no-repeat;
+}
